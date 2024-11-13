@@ -97,27 +97,34 @@ export default {
         if (valid) {
           // 使用 axios 将登录信息发送到后端
           // 当收到后端的响应时执行该括号内的代码，result 为响应信息，也就是后端返回的信息
-          this.$axios.post("/api/register").then((result) => {
-            // 当响应的编码为 0 时，说明注册成功
-            if (result.data.code == 0) {
-              // 显示后端响应的成功信息
-              this.$message({
-                message: result.data.message,
-                type: "success",
-              });
-            }
-            // 当响应的编码不为 0 时，说明注册失败
-            else {
-              // 显示后端响应的失败信息
-              this.$message({
-                message: result.data.message,
-                type: "warning",
-              });
-            }
-            // 不管响应成功还是失败，收到后端响应的消息后就不再让登录按钮显示加载动画了
-            this.loading = false;
-            console.log(result);
-          });
+          this.$axios
+            .post("/api/register", {
+              username: this.ruleForm.username,
+              password: this.ruleForm.password1,
+            })
+            .then((result) => {
+              // 当响应的编码为 0 时，说明注册成功
+              if (result.data.code == 0) {
+                // 显示后端响应的成功信息
+                this.$message({
+                  message: result.data.message,
+                  type: "success",
+                });
+                // 重置表单
+                this.resetForm(formName);
+              }
+              // 当响应的编码不为 0 时，说明注册失败
+              else {
+                // 显示后端响应的失败信息
+                this.$message({
+                  message: result.data.message,
+                  type: "warning",
+                });
+              }
+              // 不管响应成功还是失败，收到后端响应的消息后就不再让登录按钮显示加载动画了
+              this.loading = false;
+              console.log(result);
+            });
         }
         // 如果账号或密码有一个没填，就直接提示必填，不向后端请求
         else {

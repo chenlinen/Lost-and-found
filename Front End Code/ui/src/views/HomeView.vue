@@ -2,15 +2,27 @@
   <div class="home-view">
     <h1>广东工业大学失物招领系统</h1>
     <div class="button-container">
-      <el-button type="primary" @click="goToRecover" class="large-button">找回物品</el-button>
-      <el-button type="success" @click="goToPost" class="large-button">发布帖子</el-button>
+      <el-button type="primary" @click="goToRecover" class="large-button"
+        >找回物品</el-button
+      >
+      <el-button type="success" @click="goToPost" class="large-button"
+        >发布帖子</el-button
+      >
     </div>
-    <img src="../assets/logo.png" alt="头像" class="avatar" @click="goToProfile" />
+    <img :src="userAvatar" alt="头像" class="avatar" @click="goToProfile" />
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      userAvatar: "",
+    };
+  },
+  created() {
+    this.fetchUserAvatar();
+  },
   methods: {
     // 跳转找回物品
     goToRecover() {
@@ -23,7 +35,21 @@ export default {
     // 跳转个人主页
     goToProfile() {
       this.$router.push("/profile");
-    }
+    },
+    // 获取用户头像
+    fetchUserAvatar() {
+      // 从 localStorage 获取 Token
+      const token = localStorage.getItem("token");
+      this.axios
+        .get("/api/home", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((result) => {
+          this.userAvatar = result.data.avatar;
+        });
+    },
   },
 };
 </script>
@@ -64,7 +90,7 @@ h1 {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* 按钮特效 */
+/* 特效样式 */
 .large-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
