@@ -12,3 +12,5 @@
     "code": 1,
     "message": "账号或密码错误！"
 }
+
+//token是JSON Web Token
