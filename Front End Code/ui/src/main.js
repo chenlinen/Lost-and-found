@@ -8,6 +8,8 @@ import router from './router'
 import './mock/login.js'
 import './mock/register.js'
 import './mock/home.js'
+import './mock/personalhome.js'
+import './mock/update.js'
 
 //引入Element-ui
 import ElementUI from 'element-ui'
