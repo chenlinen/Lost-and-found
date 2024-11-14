@@ -1,0 +1,10 @@
+请求地址：/api/personalhome
+请求方法：get
+请求参数：JSON Web Token
+响应返回样例：
+{
+    "avatar": "https://pic2.zhimg.com/v2-5fb13110e1de13d4c11e6e7f5b8026da_r.jpg",
+    "username": "rain",
+    "phone": "17728273837",
+    "password": "123456"
+}
