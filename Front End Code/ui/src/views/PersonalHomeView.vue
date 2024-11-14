@@ -38,7 +38,7 @@
         </el-form-item>
         <el-form-item label="密码">
           <el-input
-            type="password"
+            type="text"
             v-model="newPassword"
             @input="isPasswordChanged = true"
             placeholder="请输入新密码"
