@@ -34,7 +34,7 @@ export default {
     },
     // 跳转个人主页
     goToProfile() {
-      this.$router.push("/profile");
+      this.$router.push("/personalhome");
     },
     // 获取用户头像
     fetchUserAvatar() {
