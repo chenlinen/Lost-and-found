@@ -1,0 +1,13 @@
+请求地址：/api/update
+请求方法：put
+请求参数：JSON Web Token
+成功响应返回样例：
+{
+    "code": 0,
+    "message": "更新成功"
+}
+失败响应返回样例：
+{
+    "code": 1
+    "message": "更新失败"
+}
