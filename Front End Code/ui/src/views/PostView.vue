@@ -170,6 +170,7 @@ export default {
                   message: result.data.message,
                   type: "success",
                 });
+                this.$router.push("/home");
               }
               // 当响应的编码不为 0 时，说明发帖失败
               else {
